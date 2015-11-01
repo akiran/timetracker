@@ -55,7 +55,7 @@ var Header = React.createClass({
           <View style={styles.leftIcon}>
             <Image  
               style={styles.icon}
-              source={require('image!bars')} />
+              source={require('image!menu')} />
           </View>
         </TouchableHighlight>
       );
@@ -82,13 +82,12 @@ var Header = React.createClass({
             <View style={styles.rightIcon}>
               <Image 
                 style={[styles.icon, styles.rightIcon]}
-                source={require('image!plus')} />
+                source={require('image!add')} />
             </View>
           </TouchableHighlight>
         </View>
     );
   }
-
 });
 
 module.exports =  Header;    

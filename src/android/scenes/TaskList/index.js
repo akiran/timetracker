@@ -43,8 +43,8 @@ var styles = StyleSheet.create({
     color: '#333'
   },
   icon: {
-    width: 45,
-    height: 45
+    width: 20,
+    height: 20
   },
 });
 
