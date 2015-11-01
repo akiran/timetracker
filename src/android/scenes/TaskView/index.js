@@ -85,11 +85,12 @@ var TaskView = React.createClass({
     if (this.props.task.status === 'in progress') {
       task.status = 'paused';
       clearInterval(this._timer);
+      this.props.updateTask(task);
     } else {
-      this._timer = setInterval(this.timer, 1000);
       task.status === 'in progress';
+      this._timer = setInterval(this.timer, 1000);
+      this.props.updateTask(task);
     }
-    this.props.updateTask(task)
   },
   render: function () {
     var timeSpent = this.props.task.timeSpent;
