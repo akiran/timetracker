@@ -40,24 +40,51 @@ var styles = StyleSheet.create({
 });
 
 var Header = React.createClass({
+  goToTaskCreate: function () {
+    this.props.navigator.push({
+      name: 'TaskCreate'
+    });
+  },
+  goBack: function () {
+    this.props.navigator.jumpBack();
+  },
+  renderLeftNavIcon: function () {
+    if (this.props.route.name === 'TaskList') {
+      return (
+        <TouchableHighlight onPress={this.goToTaskCreate}>
+          <View style={styles.leftIcon}>
+            <Image  
+              style={styles.icon}
+              source={require('image!bars')} />
+          </View>
+        </TouchableHighlight>
+      );
+    } else {
+      return (
+        <TouchableHighlight onPress={this.goBack}>
+          <View style={styles.leftIcon}>
+            <Image  
+              style={styles.icon}
+              source={require('image!chevron_left')} />
+          </View>
+        </TouchableHighlight>
+      );
+    }
+  },
   render: function () {
     return (
         <View style={styles.header}>
-          <TouchableHighlight onPress={this.props.openMenu}>
-            <View style={styles.leftIcon}>
-              <Image  
-                style={styles.icon}
-                source={require('image!home')} />
-            </View>
-          </TouchableHighlight>
+          {this.renderLeftNavIcon()}
           <View style={styles.titleContainer}>
             <Text style={styles.title}>TIMETRACKER</Text>
           </View>
-          <View style={styles.rightIcon}>
-            <Image 
-              style={[styles.icon, styles.rightIcon]}
-              source={require('image!plus')} />
-          </View>
+          <TouchableHighlight onPress={this.goToTaskCreate}>
+            <View style={styles.rightIcon}>
+              <Image 
+                style={[styles.icon, styles.rightIcon]}
+                source={require('image!plus')} />
+            </View>
+          </TouchableHighlight>
         </View>
     );
   }
