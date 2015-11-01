@@ -12,7 +12,9 @@ var {
 
 var styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   content: {
     padding: 10,
@@ -28,24 +30,24 @@ var styles = StyleSheet.create({
     flex: 1,
   },
   buttons: {
+    height: 50,
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  buttonContainer: {
+
   },
   button: {
-    padding: 10,
+    width: 100,
     backgroundColor: '#000',
     color: '#fff',
-    margin: 10,
+    textAlign: 'center',
+    fontSize: 20
   }
 });
 
 var TaskView = React.createClass({
-  // componentDidMount: function () {
-  //   this.resumeTimer();
-  // },
-  // componentWillUnmount: function () {
-  //   this.pauseTimer();
-  // },
   timer: function () {
     var task = this.props.task;
     var timeSpent = task.timeSpent;
@@ -89,11 +91,11 @@ var TaskView = React.createClass({
             <Text>{timeSpent.hours + ':' + timeSpent.minutes + ':' + timeSpent.seconds}</Text>
           </View>
           <View style={styles.buttons}>
-            <View>
+            <View style={styles.buttonContainer}>
               <Text style={styles.button}>{task.status === 'paused'? 'Resume':'Pause'}</Text>
             </View>
             <TouchableHighlight onPress={this.resumeTimer}>
-              <View>
+              <View style={styles.buttonContainer}>
                 <Text style={styles.button}>{task.status ? 'Done': 'Start'}</Text>
               </View>
             </TouchableHighlight>
