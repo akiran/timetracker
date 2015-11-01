@@ -1,0 +1,82 @@
+{
+  "extends": "eslint:recommended",
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "strict": 0,
+    "space-before-blocks": [2, "always"],
+    "react/jsx-uses-react": 1,
+    "react/jsx-no-undef": 2,
+    "react/wrap-multilines": 2
+  },
+  "globals": {
+    "console": true,
+    "ga": true,
+    "__DEV__": true,
+    "console": true
+  },
+  "plugins": [
+    "react"
+  ]
+}{
+  "extends": "eslint:recommended",
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "strict": 0,
+    "space-before-blocks": [2, "always"],
+    "react/jsx-uses-react": 1,
+    "react/jsx-no-undef": 2,
+    "react/wrap-multilines": 2
+  },
+  "globals": {
+    "console": true,
+    "ga": true,
+    "__DEV__": true,
+    "console": true
+  },
+  "plugins": [
+    "react"
+  ]
+}{
+  "extends": "eslint:recommended",
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "strict": 0,
+    "space-before-blocks": [2, "always"],
+    "react/jsx-uses-react": 1,
+    "react/jsx-no-undef": 2,
+    "react/wrap-multilines": 2
+  },
+  "globals": {
+    "console": true,
+  },
+  "plugins": [
+    "react"
+  ]
+}
