@@ -1,7 +1,8 @@
 'use strict';
 
 var React = require('react-native');
-var Header = require('../../components/Header')
+var Header = require('../../components/Header');
+var _ = require('lodash');
 
 var {
   View,
@@ -51,7 +52,7 @@ var styles = StyleSheet.create({
 
 var TaskView = React.createClass({
   timer: function () {
-    var task = this.props.task;
+    var task = _.assign({}, this.props.task);
     var timeSpent = task.timeSpent;
     timeSpent.seconds = timeSpent.seconds + 1;
     if (timeSpent.seconds >= 60) {
@@ -85,14 +86,15 @@ var TaskView = React.createClass({
       task.status = 'paused';
       clearInterval(this._timer);
     } else {
-      task.status === 'in progress';
       this._timer = setInterval(this.timer, 1000);
+      task.status === 'in progress';
     }
     this.props.updateTask(task)
   },
   render: function () {
     var timeSpent = this.props.task.timeSpent;
     var task = this.props.task;
+    console.log(task);
     return (
       <View style={styles.container}>
         <Header route={this.props.route} navigator={this.props.navigator} />
