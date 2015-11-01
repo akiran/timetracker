@@ -57,12 +57,11 @@ var Timetracker = React.createClass({
     }
   },
   addTask: function (task) {
-    console.log('a', this.state.tasks.concat(task), 'z')
     this.setState({
       tasks: this.state.tasks.concat(task)
     });
   },
-  updateTask: function (task, cb) {
+  updateTask: function (task) {
     var index = _.findIndex(this.state.tasks, {id: task.id});
     var tasks = this.state.tasks;
     tasks[index] = task;
