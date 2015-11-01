@@ -13,37 +13,39 @@ var {
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
   },
   content: {
-    padding: 10,
-    flex: 1
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  titleContainer: {
+    flex: 1,
+    justifyContent: 'center'
   },
   title: {
     fontSize: 20,
-    marginBottom: 50,
+  },
+  timeContainer: {
     flex: 1,
   },
   time: {
     fontSize: 50,
-    flex: 1,
   },
   buttons: {
     height: 50,
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-around',
   },
   buttonContainer: {
-
+    margin: 20
   },
   button: {
     width: 100,
     backgroundColor: '#000',
     color: '#fff',
     textAlign: 'center',
-    fontSize: 20
+    fontSize: 20,
   }
 });
 
@@ -81,14 +83,14 @@ var TaskView = React.createClass({
     var timeSpent = this.props.task.timeSpent;
     var task = this.props.task;
     return (
-      <View className='container'>
+      <View style={styles.container}>
         <Header route={this.props.route} navigator={this.props.navigator} />
         <View style={styles.content}>
-          <View style={styles.title}>
-            <Text>{this.props.task.title}</Text>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>{this.props.task.title}</Text>
           </View>
-          <View style={styles.time}>
-            <Text>{timeSpent.hours + ':' + timeSpent.minutes + ':' + timeSpent.seconds}</Text>
+          <View style={styles.timeContainer}>
+            <Text style={styles.time}>{timeSpent.hours + ':' + timeSpent.minutes + ':' + timeSpent.seconds}</Text>
           </View>
           <View style={styles.buttons}>
             <View style={styles.buttonContainer}>
