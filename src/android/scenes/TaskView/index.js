@@ -63,21 +63,32 @@ var TaskView = React.createClass({
       timeSpent.minutes = 0; 
     }
     task.timeSpent = timeSpent;
-    this.props.updateTask(task)
+    this.props.updateTask(task);
   },
-  pauseTimer: function () {
-    this.setState({paused: true});
-    clearInterval(this._timer);
-  },
-  resumeTimer: function () {
+  startDoneTask: function () {
     var task = this.props.task;
-    if (!task.status) {
-      
-    }
-    this._timer = setInterval(this.timer, 1000);
+    if ((this.props.task.status === '') ) {
+      task.status = 'in progress';
+      this._timer = setInterval(this.timer, 1000);
+    } else {
+      task.status = 'completed';
+      clearInterval(this._timer);
+      this.props.navigator.push({
+        name: 'TaskList'
+      })
+    } 
+    this.props.updateTask(task);
   },
-  toggleHandler: function (e) {
-    this.setState({paused: !this.state.paused});
+  pauseResumeTask: function () {
+    var task = this.props.task;
+    if (this.props.task.status === 'in progress') {
+      task.status = 'paused';
+      clearInterval(this._timer);
+    } else {
+      task.status === 'in progress';
+      this._timer = setInterval(this.timer, 1000);
+    }
+    this.props.updateTask(task)
   },
   render: function () {
     var timeSpent = this.props.task.timeSpent;
@@ -93,12 +104,14 @@ var TaskView = React.createClass({
             <Text style={styles.time}>{timeSpent.hours + ':' + timeSpent.minutes + ':' + timeSpent.seconds}</Text>
           </View>
           <View style={styles.buttons}>
-            <View style={styles.buttonContainer}>
-              <Text style={styles.button}>{task.status === 'paused'? 'Resume':'Pause'}</Text>
-            </View>
-            <TouchableHighlight onPress={this.resumeTimer}>
+            {task.status ? <TouchableHighlight onPress={this.pauseResumeTask}>
               <View style={styles.buttonContainer}>
-                <Text style={styles.button}>{task.status ? 'Done': 'Start'}</Text>
+                <Text style={styles.button}>{task.status === 'in progress'? 'Pause':'Resume'}</Text>
+              </View>
+            </TouchableHighlight>: null}
+            <TouchableHighlight onPress={this.startDoneTask}>
+              <View style={styles.buttonContainer}>
+                <Text style={styles.button}>{task.status === '' ? 'Start': 'Done'}</Text>
               </View>
             </TouchableHighlight>
           </View>

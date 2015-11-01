@@ -67,7 +67,8 @@ var Timetracker = React.createClass({
     var tasks = this.state.tasks;
     tasks[index] = task;
     this.setState({
-      tasks: tasks
+      tasks: tasks,
+      selectedTask: _.assign({}, task)
     });
   },
   selectTask: function (task) {
